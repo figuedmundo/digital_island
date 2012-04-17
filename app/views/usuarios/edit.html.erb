@@ -1,13 +1,17 @@
-<h1>Registro</h1>
+<h1>
+  Editar
+</h1>
 
 <div class="row">
   <div class="span6 offset3">
+    
     <%= form_for @usuario do |f| -%>
-
+      
       <%= render 'form_for_fields', f: f %>
 
-      <%= f.submit "Crear cuenta",  class: "btn btn-large btn-danger" %>      
-      
+      <%= f.submit "Guardar datos", class: "btn btn-large btn-danger" %>
+    
     <% end -%>
+
   </div>
 </div>

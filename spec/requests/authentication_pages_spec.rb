@@ -23,12 +23,8 @@ describe "AuthenticationPages" do
 
     describe "with valid info" do
       let(:usuario) { FactoryGirl.create(:usuario) }
-      before do
-        fill_in "Email",   with: usuario.email
-        fill_in "Password",   with: usuario.password
-        click_button 'Entrar'
-      end
-
+      before { log_in(user) }
+            
       it { should have_selector('title', text: usuario.nombre) }
       it { should have_link('Salir', href: logout_path) }
       it { should_not have_link('Entrar', href: login_path) }
@@ -37,6 +33,8 @@ describe "AuthenticationPages" do
         before { click_link "Salir" }
         it { should have_link('Entrar', href: login_path) }
       end
+
+      
     end
   end
   
