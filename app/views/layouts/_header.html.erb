@@ -5,11 +5,14 @@
       <nav>
         <ul class="nav pull-right">
           
-          <li><%= link_to "Ayuda", '#' %></li>
+          <!-- <li><%= link_to "Ayuda", '#' %></li> -->
 
-          <li><%= link_to "Sign in", '#' %></li>
-
-          <li> <%= link_to "Sign out", '#' %> </li>
+          <% if loged_in? %>
+            <li> <%= link_to current_user.nombre, current_user %> </li>
+            <li> <%= link_to "Salir", logout_path, method: 'delete' %> </li>
+          <% else %>
+            <li><%= link_to "Entrar", login_path %></li>
+          <% end -%>
 
         </ul>
       </nav>

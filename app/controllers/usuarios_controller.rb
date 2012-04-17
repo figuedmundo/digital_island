@@ -18,6 +18,7 @@ class UsuariosController < ApplicationController
     @usuario = Usuario.new(params[:usuario])
     if @usuario.save
       flash[:success] = "Usuario creado correctamente"
+      log_in @usuario
       redirect_to @usuario
     else
       @title = "Registro"

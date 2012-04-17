@@ -10,6 +10,7 @@
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #  password_digest :string(255)
+#  remember_token  :string(255)
 #
 
 require 'spec_helper'
@@ -28,6 +29,8 @@ describe Usuario do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:authenticate) }
+  it { should respond_to(:remember_token) }
 
   it { should be_valid }
 
@@ -83,5 +86,10 @@ describe Usuario do
   describe "when password confirmation is nil" do
      before { @usuario.password_confirmation = nil }
      it { should_not be_valid }
+  end
+
+  describe "rememeber token" do
+    before { @usuario.save }
+    its(:remember_token) { should_not be_blank }
   end
 end

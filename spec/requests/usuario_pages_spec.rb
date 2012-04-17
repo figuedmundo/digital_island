@@ -50,6 +50,7 @@ describe "Usuario Pages" do
         let(:usuario) { Usuario.find_by_email("usuario@ejemplo.com") }
 
         it { should have_selector('title', text: usuario.nombre) }
+        it { should have_link('Salir', href: logout_path) }
       end
     end
   end

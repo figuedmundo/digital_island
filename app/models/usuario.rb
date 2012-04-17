@@ -10,11 +10,13 @@
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #  password_digest :string(255)
+#  remember_token  :string(255)
 #
 
 class Usuario < ActiveRecord::Base
   attr_accessible :apellido, :email, :nombre, :telefono, :password, :password_confirmation
   has_secure_password
+  before_save :create_remember_token
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_TELEFONO_REGEX = /^([0-9])*$/
@@ -38,5 +40,11 @@ class Usuario < ActiveRecord::Base
                         
   validates :password_confirmation,  presence: true
 
+
+  private
+
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 
 end
