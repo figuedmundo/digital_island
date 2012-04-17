@@ -17,6 +17,7 @@ class Usuario < ActiveRecord::Base
   has_secure_password
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_TELEFONO_REGEX = /^([0-9])*$/
 
   validates :nombre,    presence: true,
                         length: { maximum: 50 }
@@ -29,7 +30,8 @@ class Usuario < ActiveRecord::Base
                         uniqueness: { case_sensitive: false }
 
   validates :telefono,  presence: true,
-                        length: { maximum: 15 }
+                        length: { maximum: 15 },
+                        format: { with: VALID_TELEFONO_REGEX }
 
   validates :password,  presence: true,
                         length: { minimum: 6 }

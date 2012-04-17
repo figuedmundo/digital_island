@@ -1,7 +1,11 @@
 DigitalIsland::Application.routes.draw do
-  get "usuarios/index"
+
+  resources :usuarios
 
   root :to => 'usuarios#index'
+
+  match '/registro', to: 'usuarios#new'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

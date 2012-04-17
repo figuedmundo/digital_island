@@ -55,6 +55,11 @@ describe Usuario do
     it { should_not be_valid }
   end
 
+  describe "when telefono is invalid" do
+    before { @usuario.telefono = "invalido" }
+    it { should_not be_valid }
+  end
+
   describe "when email is duplicate" do
     before do
       usuario_nuevo = @usuario.dup
