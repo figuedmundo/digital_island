@@ -42,6 +42,15 @@ describe "Usuario Pages" do
       it "should create a user" do
         expect { click_button submit }.to change(Usuario, :count).by(1)
       end
+
+      describe "after saving the user" do
+        before do
+          click_button submit
+        end
+        let(:usuario) { Usuario.find_by_email("usuario@ejemplo.com") }
+
+        it { should have_selector('title', text: usuario.nombre) }
+      end
     end
   end
 end
