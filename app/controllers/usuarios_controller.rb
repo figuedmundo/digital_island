@@ -4,7 +4,7 @@ class UsuariosController < ApplicationController
   before_filter :usuario_correcto, only: [:show ,:edit, :update]
   before_filter :registro_clientes, only: [:new, :create]
   before_filter :no_cliente, only: :index
-  # before_filter :privilegios_show, only: :show
+  before_filter :admin_user, only: :destroy
 
   
   
@@ -64,6 +64,12 @@ class UsuariosController < ApplicationController
     end
 
   end
+
+  def destroy
+    Usuario.find(params[:id]).destroy
+    flash[:success] = "usuario eliminado"
+    redirect_to root_path
+  end
 end
 
 private
@@ -84,17 +90,15 @@ private
   def usuario_correcto
     @usuario = Usuario.find_by_id(params[:id])
     @title = "Editar perfil de #{@usuario.nombre}"
-    if current_user.cliente?
-      redirect_to(current_user) unless current_user?(@usuario)
-    end
+    # if current_user.cliente?
+      redirect_to(root_path) unless current_user?(@usuario)
+    # end
   end
 
   def no_cliente
     redirect_to current_user if current_user.cliente?
   end
 
-
-
-  # def privilegios_show
-  #   redirect_to root_path if !current_user?(@usuario) || current_user.cliente? 
-  # end
+  def admin_user
+    redirect_to root_path unless current_user.admin? 
+  end

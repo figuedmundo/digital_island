@@ -113,7 +113,7 @@ describe "AuthenticationPages" do
 
         describe "editar otro cliente con PUT sobre update action" do
           before { put usuario_path(other_cliente) }
-          specify { response.should redirect_to(usuario_path(cliente)) }
+          specify { response.should redirect_to(root_path) }
         end
       end
     end

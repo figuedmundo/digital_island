@@ -122,5 +122,19 @@ describe "Usuario Pages" do
       specify { usuario.reload.email.should == new_email }
     end
   end    
+
+  describe "destroy users" do
+    let!(:admin) { FactoryGirl.create(:admin) }
+    let!(:usuario) { FactoryGirl.create(:usuario, :email => "otro@usuario.com") }
+    before do
+      log_in admin
+      visit root_path
+    end
+
+    it { should have_link('delete') }
+    it "should be able to delete un usuario" do
+      expect { click_link('delete') }.to change(Usuario, :count).by(-1)
+    end
+  end
 end
   

@@ -27,7 +27,7 @@
             <% if current_user.admin? %>
             <td><%= usuario.created_by%></td>
             <td><%= usuario.created_at.strftime("%d-%m-%Y")%></td>
-            <td><%= link_to 'delete', usuarios_path(usuario), action: 'delete' %></td>
+            <td><%= link_to 'delete', usuario, method: 'delete', confirm: "Estas seguro??" %></td>
             <% end -%>
           </tr>
         <% end -%>
