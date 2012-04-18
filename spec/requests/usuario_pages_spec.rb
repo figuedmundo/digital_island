@@ -6,20 +6,50 @@ describe "Usuario Pages" do
   describe "index page" do
     before { visit root_path }
               
-    it { should have_selector('title', text: "Usuarios") }
+    it { should have_selector('title', text: "Log in") }
+
+    describe "log in users" do
+      describe "admin or tecnico or vendedor" do
+        let(:admin) { FactoryGirl.create(:admin) }
+        before do
+          log_in admin
+          visit root_path 
+        end
+
+        it { should have_selector('title', text: "Usuarios") }
+      end
+
+      describe "cliente" do
+        let(:cliente) { FactoryGirl.create(:usuario) }
+        before do
+          log_in cliente
+          visit root_path 
+        end
+
+        it { should_not have_selector('title', text: "Usuarios") }
+      end
+
+    end
+    
   end
 
   describe "show(usuario) page" do
     let(:usuario) { FactoryGirl.create(:usuario) }
-    before { visit usuario_path(usuario) }
-
+    before do
+      log_in usuario
+      visit usuario_path(usuario) 
+    end
+    
     it { should have_selector('title', text: usuario.nombre) }
     it { should have_selector('h1', text: usuario.nombre) }
   end
    
   describe "registro page" do
-    before { visit registro_path }
-    it { should have_selector('title', text: "Registro") }
+    let(:vendedor) { FactoryGirl.create(:vendedor) }
+    before do
+      log_in vendedor
+      visit registro_path 
+    end
 
     let(:submit) { "Crear cuenta" }
 
@@ -33,10 +63,10 @@ describe "Usuario Pages" do
       before do
         fill_in "Nombre",   with: "Usuario"
         fill_in "Apellido",   with: "Ejemplo"
-        fill_in "Email",   with: "usuario@ejemplo.com"
+        fill_in "Email",   with: "usuario1@ejemplo.com"
         fill_in "Telefono",   with: "45612312"
-        fill_in "Password",   with: "foobar"
-        fill_in "Confirmar Password",   with: "foobar"
+        # fill_in "Password",   with: "foobar"
+        # fill_in "Confirmar Password",   with: "foobar"
       end
 
       it "should create a user" do
@@ -47,17 +77,20 @@ describe "Usuario Pages" do
         before do
           click_button submit
         end
-        let(:usuario) { Usuario.find_by_email("usuario@ejemplo.com") }
+        let(:usuario) { Usuario.find_by_email("usuario1@ejemplo.com") }
 
         it { should have_selector('title', text: usuario.nombre) }
-        it { should have_link('Salir', href: logout_path) }
+        # it { should have_link('Salir', href: logout_path) }
       end
     end
   end
 
   describe "edit" do
     let(:usuario) { FactoryGirl.create(:usuario) }
-    before { visit edit_usuario_path(usuario) }
+    before do
+      log_in usuario
+      visit edit_usuario_path(usuario)
+    end
 
     describe "page" do
       it { should have_selector('title', text: "Editar perfil") }

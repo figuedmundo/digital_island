@@ -7,6 +7,23 @@ FactoryGirl.define do
     telefono "79769505"
     password              "foobar"
     password_confirmation "foobar"
+
+    factory :admin do
+      admin true
+      cliente false
+    end
+
+    factory :tecnico do
+      tecnico true
+      cliente false
+    end
+
+    factory :vendedor do
+      vendedor true
+      cliente false
+    end
+
+
   end
   
 end

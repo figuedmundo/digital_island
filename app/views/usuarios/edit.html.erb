@@ -2,6 +2,10 @@
   Editar
 </h1>
 
+      <% if !current_user.cliente? %>
+        <%= link_to "Cancelar", root_path, class: "btn btn-large btn-primary" %>
+      <% end -%>
+
 <div class="row">
   <div class="span6 offset3">
     
@@ -9,9 +13,15 @@
       
       <%= render 'form_for_fields', f: f %>
 
-      <%= f.submit "Guardar datos", class: "btn btn-large btn-danger" %>
     
+      <%= render 'form_for_password', f: f %>
+      
+      <%= f.submit "Guardar datos", class: "btn btn-large btn-danger" %>
+
     <% end -%>
+
+
+    
 
   </div>
 </div>

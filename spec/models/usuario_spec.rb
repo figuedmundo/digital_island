@@ -11,6 +11,10 @@
 #  updated_at      :datetime        not null
 #  password_digest :string(255)
 #  remember_token  :string(255)
+#  admin           :boolean         default(FALSE)
+#  tecnico         :boolean         default(FALSE)
+#  vendedor        :boolean         default(FALSE)
+#  cliente         :boolean         default(TRUE)
 #
 
 require 'spec_helper'
@@ -31,8 +35,16 @@ describe Usuario do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:remember_token) }
+  it { should respond_to(:admin) }
+  it { should respond_to(:tecnico) }
+  it { should respond_to(:vendedor) }
+  it { should respond_to(:cliente) }
+  it { should respond_to(:created_by) }
+
 
   it { should be_valid }
+
+  
 
   describe "when nombre is blank" do
     before { @usuario.nombre = "  " }

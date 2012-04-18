@@ -11,6 +11,10 @@
 #  updated_at      :datetime        not null
 #  password_digest :string(255)
 #  remember_token  :string(255)
+#  admin           :boolean         default(FALSE)
+#  tecnico         :boolean         default(FALSE)
+#  vendedor        :boolean         default(FALSE)
+#  cliente         :boolean         default(TRUE)
 #
 
 class Usuario < ActiveRecord::Base

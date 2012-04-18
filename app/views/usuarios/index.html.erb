@@ -1,0 +1,39 @@
+<h1>
+  Lista de los Usuarios
+</h1>
+
+<div class="users">
+  
+  <table id="usuarios" class="table table-striped">
+
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Telefono</th>
+        <th>Permiso</th>
+        <th>Email</th>
+
+      </tr>
+    </thead>
+
+
+    <tbody><% @usuarios.each do |usuario| %>
+      <% unless current_user == usuario || usuario.admin? %>
+          <tr>
+            <td><%= link_to "#{usuario.nombre} #{usuario.apellido}", usuario %></td>
+            <td><%= usuario.telefono %></td>
+            <td><%= rol(usuario)  %></td>
+            <td><%= usuario.email %></td>
+            <% if current_user.admin? %>
+            <td><%= link_to 'delete', usuarios_path(usuario), action: 'delete' %></td>
+            <% end -%>
+          </tr>
+        <% end -%>
+      <% end -%>
+    </tbody>
+
+
+  </table>
+
+
+</div>
