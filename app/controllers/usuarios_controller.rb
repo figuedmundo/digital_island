@@ -27,6 +27,7 @@ class UsuariosController < ApplicationController
     @usuario = Usuario.new(params[:usuario])
     @usuario.password = DEFAULT_PASSWORD
     @usuario.password_confirmation = DEFAULT_PASSWORD
+    @usuario.created_by = current_user.nombre
     if @usuario.save
       flash[:success] = "Usuario creado correctamente"
       redirect_to @usuario

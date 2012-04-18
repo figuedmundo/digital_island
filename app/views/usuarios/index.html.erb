@@ -10,8 +10,8 @@
       <tr>
         <th>Nombre</th>
         <th>Telefono</th>
-        <th>Permiso</th>
         <th>Email</th>
+        <th>Permiso</th>
 
       </tr>
     </thead>
@@ -22,9 +22,11 @@
           <tr>
             <td><%= link_to "#{usuario.nombre} #{usuario.apellido}", usuario %></td>
             <td><%= usuario.telefono %></td>
-            <td><%= rol(usuario)  %></td>
             <td><%= usuario.email %></td>
+            <td><%= rol(usuario)  %></td>
             <% if current_user.admin? %>
+            <td><%= usuario.created_by%></td>
+            <td><%= usuario.created_at.strftime("%d-%m-%Y")%></td>
             <td><%= link_to 'delete', usuarios_path(usuario), action: 'delete' %></td>
             <% end -%>
           </tr>
