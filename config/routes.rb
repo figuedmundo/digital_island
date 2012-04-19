@@ -1,7 +1,10 @@
 DigitalIsland::Application.routes.draw do
 
+
+
   resources :usuarios
   resources :sessions, only: [:new, :create, :destroy]
+  resources :items
 
   root :to => 'usuarios#index'
 

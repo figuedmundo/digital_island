@@ -19,8 +19,10 @@ class UsuariosController < ApplicationController
   end
 
   def show
-    @usuario = Usuario.find(params[:id])
+    # @usuario = Usuario.find(params[:id])
     @title = @usuario.nombre
+    @items = @usuario.items
+    session[:cliente] = @usuario.id
   end
 
   def create
@@ -79,9 +81,7 @@ private
   #   @title = "Editar perfil de #{@usuario.nombre}"
   # end
 
-  def logear_usuario
-    redirect_to login_path, notice: "Porfor, Ingrese al sistema" unless loged_in?
-  end
+
 
   def registro_clientes 
     redirect_to root_path, notice: "Acceso restringido" if current_user.cliente?
@@ -90,9 +90,9 @@ private
   def usuario_correcto
     @usuario = Usuario.find_by_id(params[:id])
     @title = "Editar perfil de #{@usuario.nombre}"
-    # if current_user.cliente?
+    if current_user.cliente?
       redirect_to(root_path) unless current_user?(@usuario)
-    # end
+    end
   end
 
   def no_cliente

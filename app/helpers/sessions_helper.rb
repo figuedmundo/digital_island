@@ -26,6 +26,10 @@ module SessionsHelper
     current_user == usuario
   end
 
+  def logear_usuario
+    redirect_to login_path, notice: "Porfor, Ingrese al sistema" unless loged_in?
+  end
+
   private
 
     def usuario_from_remember_token

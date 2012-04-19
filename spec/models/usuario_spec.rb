@@ -15,6 +15,7 @@
 #  tecnico         :boolean         default(FALSE)
 #  vendedor        :boolean         default(FALSE)
 #  cliente         :boolean         default(TRUE)
+#  created_by      :string(255)
 #
 
 require 'spec_helper'
@@ -40,6 +41,7 @@ describe Usuario do
   it { should respond_to(:vendedor) }
   it { should respond_to(:cliente) }
   it { should respond_to(:created_by) }
+  it { should respond_to(:items) }
 
 
   it { should be_valid }

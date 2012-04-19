@@ -22,8 +22,11 @@ FactoryGirl.define do
       vendedor true
       cliente false
     end
-
-
   end
   
+  factory :item do
+    detalle "Lorem ipsun"
+    estado  "recibido"
+    usuario
+  end  
 end

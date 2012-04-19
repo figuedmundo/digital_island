@@ -41,5 +41,14 @@ namespace :db do
                      password: password,
                      password_confirmation: password)
     end
+
+    clientes = Usuario.where(cliente: true)
+    10.times do
+      detalle = Faker::Lorem.sentence(5)
+      estado = 'recibido'
+      clientes.each do |cliente|
+        cliente.items.create!(detalle: detalle, estado: estado)
+      end
+    end
   end
 end

@@ -15,10 +15,9 @@
 
       </tr>
     </thead>
-
-
-    <tbody><% @usuarios.each do |usuario| %>
-      <% unless current_user == usuario || usuario.admin? %>
+    <tbody>
+      <% @usuarios.each do |usuario| %>
+        <% unless current_user == usuario || usuario.admin? %>
           <tr>
             <td><%= link_to "#{usuario.nombre} #{usuario.apellido}", usuario %></td>
             <td><%= usuario.telefono %></td>

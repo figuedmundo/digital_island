@@ -8,11 +8,13 @@
 
           <% if loged_in? %>
 
+            <% if current_user.tecnico? || current_user.vendedor? %>
+              <li></li>
+            <% end -%>
+            
             <% unless current_user.cliente? %>
               <li> <%=  link_to "Registrar cliente", registro_path  %> </li>
             <% end -%>
-
-
 
             <li> <%= link_to current_user.nombre, current_user %> </li>
             <li> <%= link_to "Salir", logout_path, method: 'delete' %> </li>

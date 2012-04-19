@@ -15,11 +15,14 @@
 #  tecnico         :boolean         default(FALSE)
 #  vendedor        :boolean         default(FALSE)
 #  cliente         :boolean         default(TRUE)
+#  created_by      :string(255)
 #
 
 class Usuario < ActiveRecord::Base
   attr_accessible :apellido, :email, :nombre, :telefono, :password, :password_confirmation
   has_secure_password
+  has_many :items, dependent: :destroy
+
   before_save :create_remember_token
   # before_save :registrar_created_by
 

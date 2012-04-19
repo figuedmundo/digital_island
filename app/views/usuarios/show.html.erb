@@ -8,7 +8,7 @@
   
       <div id="datos">
         <p>
-          <%= @usuario.telefono %> 
+          <strong>Telf: </strong><%= @usuario.telefono %> 
         </p>
         <p>
           <%= @usuario.email %> 
@@ -16,8 +16,36 @@
         <% if current_user?(@usuario) %>
         <%= link_to "EDITAR DATOS", edit_usuario_path(@usuario), class: "btn btn-small btn-info"%>
         <% end -%>
+
+        <% if current_user.tecnico || current_user.vendedor? %>
+        <p>
+          <%= link_to "NUEVO ITEM", new_item_path %>
+        </p>
+        <% end -%>
       </div>
     </section>
   </aside>
+
+  <div class="span8">
+    
+    <% if @usuario.items.any? %>
+      <h3>Items</h3>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#N</th>
+            <th>Detalle</th>
+            <th>Estado</th>
+         </tr>
+        </thead>
+        <tbody>
+        
+          <%= render @items %>
+
+        </tbody>
+      </table>
+    <% end -%>
+  </div>
 </div>
 

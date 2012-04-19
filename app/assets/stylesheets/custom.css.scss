@@ -15,6 +15,7 @@ html {
 
 body {
     padding-top: 60px;
+    min-height: 720px
 }
 
 section {
@@ -141,6 +142,15 @@ aside {
       text-align: left;
       letter-spacing: -1px;
       margin-bottom: 3px;
+    }
+    #estado {
+      font-size: 1.6em;
+      text-align: center;
+    }
+    #datos {
+      padding: 20px 0;
+      font-size: 1.2em;
+
     }
   }
 }
