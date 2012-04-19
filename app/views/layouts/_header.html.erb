@@ -9,7 +9,7 @@
           <% if loged_in? %>
 
             <% if current_user.tecnico? || current_user.vendedor? %>
-              <li></li>
+              <li><%= link_to "Items", items_path %></li>
             <% end -%>
             
             <% unless current_user.cliente? %>

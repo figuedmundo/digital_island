@@ -37,6 +37,11 @@
             <th>#N</th>
             <th>Detalle</th>
             <th>Estado</th>
+            <% unless current_user.cliente? %>
+            <th>Cliente</th>
+            <th>Fecha</th>
+            <% end -%>
+
          </tr>
         </thead>
         <tbody>
