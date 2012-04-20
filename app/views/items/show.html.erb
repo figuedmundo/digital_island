@@ -7,29 +7,42 @@
         <p>
           <strong><%= @item.estado %></strong>
         </p>
-
+        <% if current_user.tecnico? %>
         <p>
           <%= link_to "REPORTE", edit_item_path(@item), class: "btn btn-primary" %>
         </p>
+        <% end -%>
       </div>
     </section>
     
   </aside>
 
-  <div class="span8">
+  <div id="descripcion" class="span8">
     
     <h3>Descripcion</h3>
-      
-    <dl class="dl-horizontal">
-      
-      <dt>Nombre</dt>
-      <dd><%= @item.usuario.nombre+' '+@item.usuario.apellido %></dd>
-      <dt>Detalle</dt>
-      <dd><%= @item.detalle %></dd>
-      <dt>Reporte</dt>
-      <dd><%= @item.reporte %></dd>
 
-    </dl>
+    <div class="row item-descripcion">
+      <div class="span1 der"><strong>Nombre</strong></div>
+      <div class="span4">
+          <%= link_to @item.usuario.nombre+' '+@item.usuario.apellido, @item.usuario %>
+      </div>
+    </div>  
+   
+    <div class="row item-descripcion">
+      <div class="span1 der"><strong>Detalle</strong></div>
+      <div class="span4">
+          <textarea name="detalle"  cols="30" rows="5" readonly="readonly"><%= @item.detalle %></textarea>
+      </div>
+    </div>
+
+    <% unless @item.reporte.nil? %>
+    <div class="row item-descripcion">
+      <div class="span1 der"><strong>Reporte</strong></div>
+      <div class="span4">
+          <textarea name="detalle"  cols="30" rows="10" readonly="readonly"><%= @item.reporte %></textarea>
+      </div>
+    </div>
+    <% end -%>
 
   </div>  
 

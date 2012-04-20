@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     elsif usuario.authenticate(params[:password])
       log_in usuario
       if params[:password] == DEFAULT_PASSWORD
-        flash[:notice] = "Revisa tus datos"
+        flash[:notice] = "Personaliza tu Password!! no seas flojo. =D "
         redirect_to edit_usuario_path(usuario)
       else
         flash[:success] = "Bienvenido"

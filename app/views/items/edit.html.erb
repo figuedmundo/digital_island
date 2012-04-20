@@ -1,6 +1,6 @@
 <div class="row">
   
-  <div class="span6 offset3">
+  <div class="span8 offset2">
     <h1>Editar Item # <%= @item.id %></h1>
 
     <%= form_for(@item, html: { class: "form-horizontal" })  do |f| -%>
@@ -8,7 +8,13 @@
       <div class="control-group">
           <%= f.label :detalle, class: "control-label" %>
         <div class="controls">
-          <%= f.text_area :detalle , rows: "10"%>
+          <%= f.text_area :detalle , rows: "10", readonly: "readonly"%>
+        </div>
+      </div>
+      <div class="control-group">
+          <%= f.label :reporte, class: "control-label" %>
+        <div class="controls">
+          <%= f.text_area :reporte , rows: "10"%>
         </div>
       </div>
       

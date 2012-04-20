@@ -7,4 +7,9 @@
   <td><%= link_to "#{item.usuario.nombre} #{item.usuario.apellido}", item.usuario%></td>
   <td><%= item.created_at.strftime("%d-%m-%Y") %></td>
   <% end -%>
+
+  <% if current_user.admin? %>
+  <td><%= link_to "delete", item, method: :delete,
+                                  confirm: "Seguro??" %></td>
+  <% end -%>
 </tr>

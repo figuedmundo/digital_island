@@ -18,9 +18,12 @@ class Item < ActiveRecord::Base
   validates :usuario_id,  presence: true
 
   validates :detalle,     presence: true,
-                          length: { maximum: 500 }
+                          length: { maximum: 200 }
 
   validates :estado,      presence: true
+
+  validates :reporte,     length: { maximum: 200 }
+
 
 
   default_scope order: 'items.created_at DESC'

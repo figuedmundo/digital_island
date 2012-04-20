@@ -1,6 +1,6 @@
 
 <div class="row">
-  <aside class="span4">
+  <aside class="span3">
     <section>
       <h1>
         <%= @usuario.nombre %> <%= @usuario.apellido %>
@@ -19,14 +19,14 @@
 
         <% if current_user.tecnico || current_user.vendedor? %>
         <p>
-          <%= link_to "NUEVO ITEM", new_item_path %>
+          <%= link_to "NUEVO ITEM", new_item_path, class: "btn btn-small btn-primary" %>
         </p>
         <% end -%>
       </div>
     </section>
   </aside>
 
-  <div class="span8">
+  <div class="span9">
     
     <% if @usuario.items.any? %>
       <h3>Items</h3>

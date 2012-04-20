@@ -30,6 +30,10 @@ module SessionsHelper
     redirect_to login_path, notice: "Porfor, Ingrese al sistema" unless loged_in?
   end
 
+  def no_cliente
+    redirect_to current_user if current_user.cliente?
+  end
+
   private
 
     def usuario_from_remember_token

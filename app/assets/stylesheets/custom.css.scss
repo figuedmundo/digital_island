@@ -229,11 +229,21 @@ aside {
   }
 }
 
-/* tabla usuarios */
+/* show item */
 
-table #usuarios {
-  /*font-size: 3em;*/
-  tr {
-  /*  font-size: 3em;*/
+#descripcion {
+  h3 {
+    margin-bottom: 20px;
   }
+  .item-descripcion {
+    padding: 10px 0;
+  }
+  .der {
+    text-align: right;
+  }
+
+}
+
+#telefono {
+  color: $white;
 }

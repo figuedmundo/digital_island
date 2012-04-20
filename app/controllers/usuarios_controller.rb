@@ -95,9 +95,7 @@ private
     end
   end
 
-  def no_cliente
-    redirect_to current_user if current_user.cliente?
-  end
+  
 
   def admin_user
     redirect_to root_path unless current_user.admin? 
