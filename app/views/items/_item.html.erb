@@ -1,12 +1,19 @@
 <tr>
   <td><%= item.id %></td>
-  <td><%= link_to "#{item.detalle[0..50]}", item %></td>
+  <td><%= link_to "#{item.detalle[0..20]}", item %></td>
   <td><%= item.estado %></td>
+
   <% unless current_user.cliente? %>
-    
   <td><%= link_to "#{item.usuario.nombre} #{item.usuario.apellido}", item.usuario%></td>
-  <td><%= item.created_at.strftime("%d-%m-%Y") %></td>
   <% end -%>
+
+  <td><%= item.created_at.strftime("%d-%m-%Y") %></td>
+  <td><%= item.updated_at.strftime("%d-%m-%Y") if item.estado == 'entregado' %></td>
+
+
+  <td><%= "#{item.ac} Bs" unless item.ac.nil? %></td>
+  <td><%= "#{item.total} Bs" unless item.total.nil? %></td>
+
 
   <% if current_user.admin? %>
   <td><%= link_to "delete", item, method: :delete,

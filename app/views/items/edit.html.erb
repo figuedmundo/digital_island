@@ -5,18 +5,61 @@
 
     <%= form_for(@item, html: { class: "form-horizontal" })  do |f| -%>
     <fieldset>
-      <div class="control-group">
-          <%= f.label :detalle, class: "control-label" %>
-        <div class="controls">
-          <%= f.text_area :detalle , rows: "10", readonly: "readonly"%>
+
+      <% if current_user.tecnico? %>
+
+        <div class="control-group">
+            <%= f.label :detalle, class: "control-label" %>
+          <div class="controls">
+            <%= f.text_area :detalle , rows: "8", readonly: "readonly"%>
+          </div>
         </div>
-      </div>
-      <div class="control-group">
-          <%= f.label :reporte, class: "control-label" %>
-        <div class="controls">
-          <%= f.text_area :reporte , rows: "10"%>
+
+        <div class="control-group">
+            <%= f.label :reporte, class: "control-label" %>
+          <div class="controls">
+            <%= f.text_area :reporte , rows: "8"%>
+          </div>
         </div>
-      </div>
+
+      <% end -%>
+
+        <div class="control-group">
+            <%= f.label :estado, class: "control-label" %>
+          <div class="controls">
+
+            <% if current_user.tecnico? %>
+              <label class="radio">
+                <%= f.radio_button :estado, "revisado" %>
+                Revisado
+              </label>
+              <label class="radio">
+                <%= f.radio_button :estado, "listo" %>
+                Listo
+              </label>
+            <% end -%>
+            
+            <label class="radio">
+              <%= f.radio_button :estado, "entregado" %>
+              Entregar
+            </label>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :recogido_por, "Recogio" , class: "control-label"%>
+          <div class="controls">
+            <%= f.text_field :recogido_por %>
+            <p class="help-block"> Si el que esta recogiendo es otra persona q el cliente </p>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :total, class: "control-label" %>
+          <div class="controls">
+            <%= f.number_field :total , class: "span2"%> 
+          </div>
+        </div>
       
       <div class="form-actions">
         <%= f.submit "Guardar", class: "btn btn-primary" %>
@@ -26,3 +69,4 @@
     <% end -%>
   </div>
 </div>
+

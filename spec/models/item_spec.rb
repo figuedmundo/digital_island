@@ -2,13 +2,16 @@
 #
 # Table name: items
 #
-#  id         :integer         not null, primary key
-#  usuario_id :integer
-#  detalle    :string(255)
-#  reporte    :string(255)
-#  estado     :string(255)
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
+#  id           :integer         not null, primary key
+#  usuario_id   :integer
+#  detalle      :string(255)
+#  reporte      :string(255)
+#  estado       :string(255)
+#  created_at   :datetime        not null
+#  updated_at   :datetime        not null
+#  recogido_por :string(255)
+#  ac           :integer
+#  total        :integer
 #
 
 require 'spec_helper'

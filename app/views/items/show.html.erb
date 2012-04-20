@@ -7,11 +7,19 @@
         <p>
           <strong><%= @item.estado %></strong>
         </p>
+
         <% if current_user.tecnico? %>
-        <p>
-          <%= link_to "REPORTE", edit_item_path(@item), class: "btn btn-primary" %>
-        </p>
+          <p>
+            <%= link_to "REPORTE", edit_item_path(@item), class: "btn btn-primary" %>
+          </p>
         <% end -%>
+
+        <% if current_user.vendedor? %>
+          <p>
+            <%= link_to "ENTREGAR", edit_item_path(@item), class: "btn btn-primary" %>
+          </p>
+        <% end -%>
+
       </div>
     </section>
     

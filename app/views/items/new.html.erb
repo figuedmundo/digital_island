@@ -11,6 +11,13 @@
           <%= f.text_area :detalle , rows: "10"%>
         </div>
       </div>
+
+      <div class="control-group">
+        <%= f.label :ac, "a/c",  class: "control-label" %>
+        <div class="controls">
+          <%= f.number_field :ac , class: "span2"%> 
+        </div>
+      </div>
       
       <div class="form-actions">
         <%= f.submit "Guardar", class: "btn btn-primary" %>

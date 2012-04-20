@@ -15,6 +15,8 @@ class ItemsController < ApplicationController
   def create
     @cliente = Usuario.find(session[:cliente])
     @item = @cliente.items.build(params[:item])
+    @item.ac = @item.ac.to_i
+    @item.total = @item.total.to_i
     @item.estado = 'recibido'
     if @item.save
       flash[:notice] = "item creado"
@@ -35,11 +37,13 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find_by_id(params[:id])
+    @item.ac = @item.ac.to_i
+    @item.total = @item.total.to_i
     if @item.update_attributes(params[:item])
       flash[:success] = "Item actualizado"
       redirect_to @item
     else
-      flash.now[:error] = "params"
+      flash.now[:error] = "#{params}"
       render :edit
     end
   end
