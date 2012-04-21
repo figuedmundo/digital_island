@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_filter :loged_users, only: :new
 
   def new
     @title = "Log in"
@@ -14,7 +15,7 @@ class SessionsController < ApplicationController
     elsif usuario.authenticate(params[:password])
       log_in usuario
       if params[:password] == DEFAULT_PASSWORD
-        flash[:notice] = "Personaliza tu Password!! no seas flojo. =D "
+        flash[:notice] = "Personaliza tu Password!! y Revisa tus Datos.....no seas flojo. =D "
         redirect_to edit_usuario_path(usuario)
       else
         flash[:success] = "Bienvenido"
@@ -37,4 +38,8 @@ private
   
   def usuario_rol(user)
     (user.admin? || user.tecnico? || user.vendedor?) ? usuarios_path : user
+  end
+
+  def loged_users
+    redirect_to root_path if loged_in? 
   end

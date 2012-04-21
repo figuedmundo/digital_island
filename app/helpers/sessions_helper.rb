@@ -27,7 +27,7 @@ module SessionsHelper
   end
 
   def logear_usuario
-    redirect_to login_path, notice: "Porfor, Ingrese al sistema" unless loged_in?
+    redirect_to login_path unless loged_in?
   end
 
   def no_cliente
