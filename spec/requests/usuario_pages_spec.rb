@@ -107,7 +107,7 @@ describe "Usuario Pages" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
       before do
-        fill_in "Nombre",               with: new_name
+        fill_in "Nombre",               with: "new name"
         fill_in "Apellido",             with: usuario.apellido
         fill_in "Email",                with: new_email
         fill_in "Telefono",             with: usuario.telefono

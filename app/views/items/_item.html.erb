@@ -5,14 +5,17 @@
 
   <% unless current_user.cliente? %>
   <td><%= link_to "#{item.usuario.nombre_completo}", item.usuario%></td>
+  <td><%= item.tecnico %></td>
   <% end -%>
 
-  <td><%= item.created_at.strftime("%d-%m-%Y") %></td>
-  <td><%= item.updated_at.strftime("%d-%m-%Y") if item.estado == 'entregado' %></td>
+  <td><%= item.created_at.localtime.strftime("%d-%m-%y") %></td>
+  <td><%= item.updated_at.localtime.strftime("%d-%m-%y") if item.estado == 'entregado' %></td>
 
 
-  <td><%= "#{item.ac} Bs" unless item.ac.nil? %></td>
-  <td><%= "#{item.total} Bs" unless item.total.nil? %></td>
+  <td><%= "#{item.ac}" unless item.ac.nil? %></td>
+  <td><%= "#{item.trabajo}" unless item.ac.nil? %></td>
+  <td><%= "#{item.repuesto}" unless item.ac.nil? %></td>
+  <td><%= "#{item.total}" unless item.total.nil? %></td>
 
 
   <% if current_user.admin? %>

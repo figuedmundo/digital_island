@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     @item.estado = 'recibido'
     if @item.save
       flash[:notice] = "item creado"
-      redirect_to @cliente
+      redirect_to @item
     else
       flash.now[:error] = "#{params}"
       render :new

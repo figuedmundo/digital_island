@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+before_filter :avoid_login, only: :new
 
   def new
     @title = "Log in"
@@ -37,4 +38,8 @@ private
   
   def usuario_rol(user)
     (user.admin? || user.tecnico? || user.vendedor?) ? usuarios_path : user
+  end
+
+  def avoid_login
+    redirect_to root_path if loged_in?
   end

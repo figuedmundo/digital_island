@@ -58,6 +58,7 @@ class UsuariosController < ApplicationController
         log_in @usuario
         redirect_to @usuario
       else
+        log_in @usuario if current_user?(@usuario)
         redirect_to root_path
       end
     else
@@ -76,10 +77,6 @@ end
 
 private
 
-  # def usuario_actual
-  #   @usuario = Usuario.find_by_id(params[:id])
-  #   @title = "Editar perfil de #{@usuario.nombre}"
-  # end
 
 
 

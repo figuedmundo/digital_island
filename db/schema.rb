@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423005634) do
+ActiveRecord::Schema.define(:version => 20120423022106) do
 
   create_table "items", :force => true do |t|
     t.integer  "usuario_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20120423005634) do
     t.integer  "total"
     t.integer  "trabajo"
     t.integer  "repuesto"
+    t.string   "tecnico"
   end
 
   add_index "items", ["usuario_id", "created_at"], :name => "index_items_on_usuario_id_and_created_at"
