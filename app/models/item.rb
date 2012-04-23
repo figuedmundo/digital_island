@@ -18,7 +18,7 @@ class Item < ActiveRecord::Base
   attr_accessible :detalle, :estado, :reporte, :recogido_por, :ac, :total
   belongs_to :usuario
 
-
+  before_validation :cuentas_to_i
 
 
   validates :usuario_id,  presence: true
@@ -32,16 +32,24 @@ class Item < ActiveRecord::Base
 
   validates :recogido_por,  length: { maximum: 50 }
 
-  validates :ac,          numericality: { only_integer: true }
+  validates :ac,          numericality: { only_integer: true, 
+                                          greater_than_or_equal_to: 0 }
 
-  validates :total,       numericality: { only_integer: true }
+  validates :total,       numericality: { only_integer: true, 
+                                          greater_than_or_equal_to: 0 }
 
 
 
   default_scope order: 'items.created_at DESC'
 
+
+
 private
   
+  def cuentas_to_i
+    self.ac = ac.to_i
+    self.total = total.to_i
+  end
 
 end
 

@@ -4,7 +4,7 @@
   <td><%= item.estado %></td>
 
   <% unless current_user.cliente? %>
-  <td><%= link_to "#{item.usuario.nombre} #{item.usuario.apellido}", item.usuario%></td>
+  <td><%= link_to "#{item.usuario.nombre_completo}", item.usuario%></td>
   <% end -%>
 
   <td><%= item.created_at.strftime("%d-%m-%Y") %></td>
