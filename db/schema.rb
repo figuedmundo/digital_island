@@ -11,18 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420050518) do
+ActiveRecord::Schema.define(:version => 20120423022106) do
 
   create_table "items", :force => true do |t|
     t.integer  "usuario_id"
     t.string   "detalle"
-    t.string   "reporte"
+    t.text     "reporte"
     t.string   "estado"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "recogido_por"
     t.integer  "ac"
     t.integer  "total"
+    t.integer  "trabajo"
+    t.integer  "repuesto"
+    t.string   "tecnico"
   end
 
   add_index "items", ["usuario_id", "created_at"], :name => "index_items_on_usuario_id_and_created_at"

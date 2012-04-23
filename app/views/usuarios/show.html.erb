@@ -3,7 +3,7 @@
   <aside class="span3">
     <section>
       <h1>
-        <%= @usuario.nombre %> <%= @usuario.apellido %>
+        <%= @usuario.nombre %> 
       </h1>
   
       <div id="datos">
@@ -39,10 +39,13 @@
             <th>Estado</th>
             <% unless current_user.cliente? %>
             <th>Cliente</th>
+            <th>Tecnico</th>
             <% end -%>
             <th>Recibido</th>
             <th>Entregado</th>
             <th>a/c</th>
+            <th>Trabajo</th>
+            <th>Extra</th>
             <th>Total</th>
             <th></th>
 

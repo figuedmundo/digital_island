@@ -22,6 +22,34 @@
           </div>
         </div>
 
+         <div class="control-group">
+            <%= f.label :repuesto, class: "control-label" %>
+          <div class="controls">
+            <%= f.number_field :repuesto , class: "span2" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :trabajo, class: "control-label" %>
+          <div class="controls">
+            <%= f.number_field :trabajo , class: "span2"%> 
+          </div>
+        </div>
+
+        <div class="control-group">
+            <%= f.label :tecnico, class: "control-label" %>
+          <div class="controls">
+
+            <% tecnicos.each do |n| %>
+              <label class="radio">
+                <%= f.radio_button :tecnico, "#{n}" %>
+                <%= "#{n}" %>
+              </label>
+            <% end -%>
+            
+          </div>
+        </div>
+
       <% end -%>
 
         <div class="control-group">
@@ -54,12 +82,6 @@
           </div>
         </div>
 
-        <div class="control-group">
-          <%= f.label :total, class: "control-label" %>
-          <div class="controls">
-            <%= f.number_field :total , class: "span2"%> 
-          </div>
-        </div>
       
       <div class="form-actions">
         <%= f.submit "Guardar", class: "btn btn-primary" %>
@@ -69,4 +91,6 @@
     <% end -%>
   </div>
 </div>
+
+
 

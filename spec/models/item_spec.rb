@@ -30,6 +30,11 @@ describe Item do
   it { should respond_to(:detalle) }
   it { should respond_to(:reporte) }
   it { should respond_to(:estado) }
+  it { should respond_to(:recogido_por) }
+  it { should respond_to(:ac) }
+  it { should respond_to(:total) }
+  it { should respond_to(:trabajo) }
+  it { should respond_to(:repuesto) }
   its(:usuario) { should == cliente }
 
   it { should be_valid }

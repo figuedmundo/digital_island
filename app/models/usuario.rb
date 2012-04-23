@@ -24,10 +24,12 @@ class Usuario < ActiveRecord::Base
   has_many :items, dependent: :destroy
 
   before_save :create_remember_token
+  before_save :titleize_nombre
   # before_save :registrar_created_by
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_TELEFONO_REGEX = /^([0-9])*$/
+  VALID_TELEFONO_REGEX = /^([0-9\-\s])*$/
+
 
   validates :nombre,    presence: true,
                         length: { maximum: 50 }
@@ -40,7 +42,7 @@ class Usuario < ActiveRecord::Base
                         uniqueness: { case_sensitive: false }
 
   validates :telefono,  presence: true,
-                        length: { maximum: 15 },
+                        length: { maximum: 23 },
                         format: { with: VALID_TELEFONO_REGEX }
 
   validates :password,  presence: true,
@@ -49,11 +51,20 @@ class Usuario < ActiveRecord::Base
   validates :password_confirmation,  presence: true
 
 
+  def nombre_completo
+    "#{nombre} #{apellido}"
+  end
+
+
   private
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end
 
+    def titleize_nombre
+      self.nombre = nombre.titleize
+      self.apellido = apellido.titleize
+    end
 
 end
