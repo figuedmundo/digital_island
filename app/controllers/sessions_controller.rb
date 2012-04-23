@@ -1,9 +1,6 @@
 class SessionsController < ApplicationController
-<<<<<<< HEAD
-  before_filter :loged_users, only: :new
-=======
+
 before_filter :avoid_login, only: :new
->>>>>>> items-implementacion
 
   def new
     @title = "Log in"
@@ -44,11 +41,7 @@ private
     (user.admin? || user.tecnico? || user.vendedor?) ? usuarios_path : user
   end
 
-<<<<<<< HEAD
-  def loged_users
-    redirect_to root_path if loged_in? 
-=======
+
   def avoid_login
     redirect_to root_path if loged_in?
->>>>>>> items-implementacion
   end
