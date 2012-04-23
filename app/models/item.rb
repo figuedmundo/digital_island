@@ -25,11 +25,11 @@ class Item < ActiveRecord::Base
   validates :usuario_id,  presence: true
 
   validates :detalle,     presence: true,
-                          length: { maximum: 200 }
+                          length: { maximum: 250 }
 
   validates :estado,      presence: true
 
-  validates :reporte,     length: { maximum: 200 }
+  validates :reporte,     length: { maximum: 2000 }
 
   validates :recogido_por,  length: { maximum: 50 }
 
