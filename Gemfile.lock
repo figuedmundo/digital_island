@@ -171,7 +171,7 @@ DEPENDENCIES
   faker (= 1.0.1)
   guard-rspec (= 0.5.5)
   guard-spork (= 0.3.2)
-  jquery-rails
+  jquery-rails (= 2.0.2)
   libnotify (= 0.5.9)
   pg (= 0.13.2)
   rails (= 3.2.3)

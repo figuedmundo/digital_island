@@ -24,3 +24,6 @@ doc/
 *.sublime-workspace
 
 bundler_stubs/
+
+# its for heroku deploy reduce slug size
+.slugignore
