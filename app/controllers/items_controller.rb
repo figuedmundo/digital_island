@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
       flash[:success] = "Item actualizado"
       redirect_to @item
     else
-      flash.now[:error] = "#{params}"
+      flash.now[:error] = "Datos invalidos"
       render :edit
     end
   end

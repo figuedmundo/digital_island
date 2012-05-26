@@ -62,7 +62,8 @@ class UsuariosController < ApplicationController
         redirect_to root_path
       end
     else
-      flash.now[:error] = "#{params[:usuario]}"
+      flash.now[:error] = "Datos invalidos"
+      @title = "Editar"
       render :edit
     end
 

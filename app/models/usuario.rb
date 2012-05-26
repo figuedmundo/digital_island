@@ -25,6 +25,7 @@ class Usuario < ActiveRecord::Base
 
   before_save :create_remember_token
   before_save :titleize_nombre
+  before_save { |user| user.email = email.downcase }
   # before_save :registrar_created_by
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -46,9 +47,11 @@ class Usuario < ActiveRecord::Base
                         format: { with: VALID_TELEFONO_REGEX }
 
   validates :password,  presence: true,
-                        length: { minimum: 6 }
+                        length: { minimum: 6 },
+                        on: :create
                         
-  validates :password_confirmation,  presence: true
+  validates :password_confirmation,  presence: true,
+                                     on: :create
 
 
   def nombre_completo

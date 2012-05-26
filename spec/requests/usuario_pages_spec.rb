@@ -98,9 +98,13 @@ describe "Usuario Pages" do
     end
 
     describe "with invalid info" do
-      before { click_button 'Guardar datos' }
+      before do
+        fill_in "Nombre",   with: ""
+        fill_in "Email",   with: ""
+        click_button 'Guardar datos' 
+      end
       it { should have_selector('title', text: "Editar") }
-      # it { should have_content('error') }
+      # it { should have_content('div.alert.alert-error') }
     end
 
     describe "with valid info" do

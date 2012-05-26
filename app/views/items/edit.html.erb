@@ -22,20 +22,6 @@
           </div>
         </div>
 
-         <div class="control-group">
-            <%= f.label :repuesto, class: "control-label" %>
-          <div class="controls">
-            <%= f.number_field :repuesto , class: "span2" %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= f.label :trabajo, class: "control-label" %>
-          <div class="controls">
-            <%= f.number_field :trabajo , class: "span2"%> 
-          </div>
-        </div>
-
         <div class="control-group">
             <%= f.label :tecnico, class: "control-label" %>
           <div class="controls">
@@ -49,7 +35,6 @@
             
           </div>
         </div>
-
       <% end -%>
 
         <div class="control-group">
@@ -71,6 +56,20 @@
               <%= f.radio_button :estado, "entregado" %>
               Entregar
             </label>
+          </div>
+        </div>
+
+        <div class="control-group">
+           <%= f.label :repuesto, class: "control-label" %>
+          <div class="controls">
+            <%= f.number_field :repuesto , class: "span2" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :trabajo, class: "control-label" %>
+          <div class="controls">
+            <%= f.number_field :trabajo , class: "span2"%> 
           </div>
         </div>
 
